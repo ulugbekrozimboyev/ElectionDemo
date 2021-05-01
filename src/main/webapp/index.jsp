@@ -5,10 +5,11 @@
     <title>Election Demo</title>
 </head>
 <body>
-<h1><%= "Election Demo" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-<a href="questions">Questions</a>
+    <h1><%= "Election Demo" %>
+    </h1>
+    <br/>
+    <a href="hello-servlet">Hello Servlet</a>
+    <br/>
+    <a href="questions">Questions</a>
 </body>
 </html>
