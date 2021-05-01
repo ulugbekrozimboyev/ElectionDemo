@@ -16,7 +16,7 @@
     <h2>Questions</h2>
     <ul>
         <c:forEach var="question" items="${questionList}">
-            <li>${question}</li>
+            <li>${question.id}. ${question.title}</li>
         </c:forEach>
     </ul>
 </body>

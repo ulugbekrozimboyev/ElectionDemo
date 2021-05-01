@@ -1,5 +1,8 @@
 package com.example.ElectionDemo.servlets.questions;
 
+import com.example.ElectionDemo.dao.MainDao;
+import com.example.ElectionDemo.dto.QuestionDto;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,19 +19,17 @@ import java.util.List;
 @WebServlet(name = "QuestionsList", value = "/questions")
 public class QuestionList extends HttpServlet {
 
-    private String message;
-    private List<String> questionList;
+    private String title;
+    private List<QuestionDto> questionList;
 
     public void init() {
-        message = "Get all questions";
-        questionList = new ArrayList<>();
-        questionList.add(" This is a question one");
-        questionList.add(" This is a question two");
+        title = "Get all questions";
+        questionList = MainDao.getQuestionList();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        request.setAttribute("message", message);
+        request.setAttribute("message", title);
         request.setAttribute("questionList", questionList);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("questions/questions.jsp");
