@@ -1,4 +1,4 @@
-package com.example.ElectionDemo;
+package com.example.ElectionDemo.servlets.questions;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

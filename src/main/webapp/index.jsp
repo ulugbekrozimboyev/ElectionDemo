@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Salom papalam</title>
+    <title>Election Demo</title>
 </head>
 <body>
-<h1><%= "Salom papalam!" %>
+<h1><%= "Election Demo" %>
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
