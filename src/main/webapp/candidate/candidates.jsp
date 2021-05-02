@@ -12,6 +12,7 @@
 <div class="container mt">
   <div class="row mt-3">
     <div class="col-12"><h1 class="title">Candidates</h1></div>
+    <div class="col-12"><a href="/candidateAdd" class="btn btn-info">Add Candidate</a></div>
     <div class="col-12">
       <c:forEach var="candidate" items="${candidates}">
         <div class="card mt-3">
@@ -26,8 +27,9 @@
             </c:forEach>
           </ul>
           <div class="card-body">
-            <a href="#" class="btn btn-info">Update</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+            <a href="updateCandidate/${candidate.getId()}" class="btn btn-info">Update</a>
+            <button onClick="deleteCandidate(${candidate.getId()})" class="btn btn-danger">Delete</button>
+
           </div>
         </div>
       </c:forEach>
@@ -36,4 +38,14 @@
   </div>
 </div>
 </body>
+<script>
+  function deleteCandidate(idCandidate) {
+    fetch("/candidate?id=" + idCandidate, {method: "DELETE"})
+            .then(res => {
+              window.location.href="/CandidateList"
+              console.log(res)
+            })
+            .catch(err => console.log(err))
+  }
+</script>
 </html>
