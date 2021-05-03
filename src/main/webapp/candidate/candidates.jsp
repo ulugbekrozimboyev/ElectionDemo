@@ -27,7 +27,7 @@
             </c:forEach>
           </ul>
           <div class="card-body">
-            <a href="updateCandidate/${candidate.getId()}" class="btn btn-info">Update</a>
+            <a href="updateCandidate?id=${candidate.getId()}" class="btn btn-info">Update</a>
             <button onClick="deleteCandidate(${candidate.getId()})" class="btn btn-danger">Delete</button>
 
           </div>

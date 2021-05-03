@@ -13,23 +13,30 @@ public class CandidateDao {
     ));
 
     public static void save(CandidateDto candidateDto) {
-        candidateDto.setId((long) (candidateDtos.size() + 1));
+        candidateDto.setId((candidateDtos.get(candidateDtos.size() - 1).getId() + 1));
         candidateDtos.add(candidateDto);
     }
 
-    public Optional<CandidateDto> findById(Long id) {
+    public static Optional<CandidateDto> findById(Long id) {
+        for (CandidateDto candidateDto : candidateDtos) {
+            if(candidateDto.getId().equals(id)) {
+                return Optional.of(candidateDto);
+            }
+        }
         return Optional.empty();
     }
 
     public static List<CandidateDto> findAll() {
-        HashMap<String, String> info = new HashMap<>();
-        info.put("age", "21");
-        info.put("phone", "12345");
         return candidateDtos;
     }
 
-    public static CandidateDto update(CandidateDto candidateDto) {
-        return candidateDto;
+    public static void update(CandidateDto candidateDto) {
+        for (int i = 0; i < candidateDtos.size(); i++) {
+            if(candidateDto.getId().equals(candidateDtos.get(i).getId())) {
+                candidateDtos.set(i, candidateDto);
+                return;
+            }
+        }
     }
 
     public static void delete(Long id) {
