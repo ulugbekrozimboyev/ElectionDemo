@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,12 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="questions">Questions</a></li>
                 <li class="nav-item"><a class="nav-link" href="CandidateList">Candidates</a></li>
-                <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+                <c:if test="${empty username}">
+                    <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+                </c:if>
+                <c:if test="${not empty username}">
+                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+                </c:if>
             </ul>
         </div>
     </div>
