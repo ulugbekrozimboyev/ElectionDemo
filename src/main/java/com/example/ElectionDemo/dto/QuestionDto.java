@@ -17,4 +17,6 @@ public class QuestionDto {
         this.title = title;
     }
 
+    public QuestionDto() {
+    }
 }

@@ -5,19 +5,37 @@
   Time: 4:30 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../index.jsp" %>
 
 <html>
 <head>
     <title>${message}</title>
+
+    <style type="text/css">
+        .list-group-item {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+
 </head>
 <body>
-    <h2>Questions</h2>
-    <ul>
-        <c:forEach var="question" items="${questionList}">
-            <li>${question.id}. ${question.title}</li>
-        </c:forEach>
-    </ul>
+    <div class="container mt">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <h1>Questions</h1>
+            </div>
+            <div class="col-12"><a href="QuestionAdd" class="btn btn-info">Add Question</a></div>
+            <div class="col-md-12" style="margin-top: 20px;">
+                <ul class="list-group">
+                    <c:forEach var="question" items="${questionList}">
+                        <li class="list-group-item">${question.id}. ${question.title}</li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

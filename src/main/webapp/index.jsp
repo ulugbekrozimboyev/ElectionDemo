@@ -31,10 +31,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="hello-servlet">Hello Servlet</a></li>
                 <li class="nav-item"><a class="nav-link" href="questions">Questions</a></li>
-                <li class="nav-item"><a class="nav-link" href="/CandidateList">Candidates</a></li>
-                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="CandidateList">Candidates</a></li>
+                <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
             </ul>
         </div>
     </div>
