@@ -42,7 +42,7 @@
   function deleteCandidate(idCandidate) {
     fetch("/candidate?id=" + idCandidate, {method: "DELETE"})
             .then(res => {
-              window.location.href="/CandidateList"
+              window.location.href="/candidateList"
               console.log(res)
             })
             .catch(err => console.log(err))
