@@ -38,6 +38,9 @@ target/
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/artifacts/ElectionDemo_war_exploded.xml
+.idea/misc.xml
+.idea/vcs.xml
 server/.idea/**/workspace.xml
 server/.idea/**/tasks.xml
 server/.idea/**/usage.statistics.xml
@@ -125,7 +128,6 @@ server/.idea/
 
 *.iml
 modules.xml
-.idea/misc.xml
 *.ipr
 server/*.iml
 server/.idea/misc.xml
