@@ -46,13 +46,13 @@ public class CandidateDaoHelper {
             String fixedName = name.toLowerCase();
             switch (fixedName) {
                 case "fullname":
-                    candidateDto.setFullName(params.get(fixedName)[0]);
+                    candidateDto.setFullName(params.get(name)[0]);
                     break;
                 case "currentjob":
-                    candidateDto.setCurrentJob(params.get(fixedName)[0]);
+                    candidateDto.setCurrentJob(params.get(name)[0]);
                     break;
                 case "about":
-                    candidateDto.setAbout(params.get(fixedName)[0]);
+                    candidateDto.setAbout(params.get(name)[0]);
                     break;
                 default:
                     if(fixedName.contains("key-")) {

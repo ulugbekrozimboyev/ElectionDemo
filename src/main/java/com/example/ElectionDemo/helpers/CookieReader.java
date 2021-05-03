@@ -3,6 +3,7 @@ package com.example.ElectionDemo.helpers;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,7 +33,7 @@ public class CookieReader {
             return Optional.empty();
         }
         return Arrays.stream(request.getCookies())
-                 .filter(c -> key.equals(c.getName()))
+                 .filter(c -> Objects.equals(key, c.getName()))
                  .map(Cookie::getValue)
                  .findAny();
     }

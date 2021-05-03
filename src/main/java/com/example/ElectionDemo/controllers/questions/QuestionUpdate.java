@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet(name = "QuestionUpdate", value = "/questionUpdate")
+@WebServlet(name = "questionUpdate", value = "/questionUpdate")
 public class QuestionUpdate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

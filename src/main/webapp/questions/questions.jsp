@@ -38,7 +38,7 @@
                         <li class="list-group-item">
                                 ${question.id}. ${question.title}
                             <a href="questionDelete?id=${question.id}" class="btn btn-danger edit-btn">Delete</a>
-                            <a href="QuestionUpdate?id=${question.id}" class="btn btn-info edit-btn">Edit</a>
+                            <a href="questionUpdate?id=${question.id}" class="btn btn-info edit-btn">Edit</a>
                         </li>
                     </c:forEach>
                 </ul>
