@@ -18,6 +18,10 @@
             font-size: 18px;
             font-weight: 600;
         }
+        .list-group-item .btn {
+            float: right;
+            margin-left: 10px;
+        }
     </style>
 
 </head>
@@ -31,7 +35,11 @@
             <div class="col-md-12" style="margin-top: 20px;">
                 <ul class="list-group">
                     <c:forEach var="question" items="${questionList}">
-                        <li class="list-group-item">${question.id}. ${question.title}</li>
+                        <li class="list-group-item">
+                                ${question.id}. ${question.title}
+                            <a href="questionDelete?id=${question.id}" class="btn btn-danger edit-btn">Delete</a>
+                            <a href="questionsEdit?id=${question.id}" class="btn btn-info edit-btn">Edit</a>
+                        </li>
                     </c:forEach>
                 </ul>
             </div>

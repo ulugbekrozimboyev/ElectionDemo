@@ -5,6 +5,7 @@ import com.example.ElectionDemo.dto.QuestionDto;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Author: Ulug'bek Ro'zimboyev  <ulugbekrozimboyev@gmail.com>
@@ -24,5 +25,13 @@ public class QuestionDao {
     public static void save(QuestionDto questionDto) {
         questionDto.setId((long) (questionList.size() + 1));
         questionList.add(questionDto);
+    }
+
+    public static void delete(Long id) {
+        for (int i = 0; i < questionList.size(); i++) {
+            if (questionList.get(i).getId() == id) {
+                questionList.remove(i);
+            }
+        }
     }
 }
