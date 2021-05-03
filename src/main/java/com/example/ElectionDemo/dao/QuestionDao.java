@@ -34,4 +34,17 @@ public class QuestionDao {
             }
         }
     }
+
+    public static Optional<QuestionDto> findById(Long id) {
+        Optional<QuestionDto> optional = questionList.stream().filter(item -> item.getId() == id).findFirst();
+        return optional;
+    }
+
+    public static void update(QuestionDto questionDto) {
+        for (int i = 0; i < questionList.size(); i++) {
+            if (questionList.get(i).getId() == questionDto.getId()) {
+                questionList.get(i).setTitle(questionDto.getTitle());
+            }
+        }
+    }
 }
