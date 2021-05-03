@@ -16,16 +16,16 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-default">
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <a class="navbar-brand" href="/"><%= "Election Demo" %></a>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="hello-servlet">Hello Servlet</a></li>
-                <li><a href="questions">Questions</a></li>
-                <li><a href="/CandidateList">Candidates</a></li>
-                <li><a href="/login">Login</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav class="navbar navbar-default">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <a class="navbar-brand" href="/"><%= "Election Demo" %></a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="hello-servlet">Hello Servlet</a></li>
+            <li><a href="questions">Questions</a></li>
+            <li><a href="${pageContext.request.contextPath}/candidateList">Candidates</a></li>
+            <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+        </ul>
+    </div>
+</nav>
 </body>
 </html>

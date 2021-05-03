@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.servlets.login;
+package com.example.ElectionDemo.controllers.login;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

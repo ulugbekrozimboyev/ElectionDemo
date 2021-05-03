@@ -9,7 +9,7 @@ import java.util.List;
  * Author: Ulug'bek Ro'zimboyev  <ulugbekrozimboyev@gmail.com>
  * Date: 5/1/2021 5:42 PM
  */
-public class MainDao {
+public class QuestionsDao {
 
     public static List<QuestionDto> getQuestionList() {
         // TODO get from DB

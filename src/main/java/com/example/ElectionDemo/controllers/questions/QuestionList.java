@@ -1,6 +1,6 @@
-package com.example.ElectionDemo.servlets.questions;
+package com.example.ElectionDemo.controllers.questions;
 
-import com.example.ElectionDemo.dao.MainDao;
+import com.example.ElectionDemo.dao.QuestionsDao;
 import com.example.ElectionDemo.dto.QuestionDto;
 
 import javax.servlet.RequestDispatcher;
@@ -24,7 +24,7 @@ public class QuestionList extends HttpServlet {
 
     public void init() {
         title = "Get all questions";
-        questions = MainDao.getQuestionList();
+        questions = QuestionsDao.getQuestionList();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
