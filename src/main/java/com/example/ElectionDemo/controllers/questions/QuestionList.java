@@ -24,7 +24,7 @@ public class QuestionList extends HttpServlet {
 
     public void init() {
         title = "Get all questions";
-        questions = QuestionsDao.getQuestionList();
+        questions = QuestionDao.findAll();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

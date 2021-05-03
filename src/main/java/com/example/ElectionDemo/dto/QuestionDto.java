@@ -16,4 +16,7 @@ public class QuestionDto {
         this.id = id;
         this.title = title;
     }
+
+    public QuestionDto() {
+    }
 }
