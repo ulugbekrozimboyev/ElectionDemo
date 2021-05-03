@@ -45,6 +45,9 @@ public class CandidateDaoHelper {
 
             String fixedName = name.toLowerCase();
             switch (fixedName) {
+                case "id":
+                    candidateDto.setId(Long.valueOf(params.get(name)[0]));
+                    break;
                 case "fullname":
                     candidateDto.setFullName(params.get(name)[0]);
                     break;

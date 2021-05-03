@@ -30,6 +30,6 @@ public class Candidate extends HttpServlet {
         CandidateDao.update(candidateDto);
         CandidateDao.save(candidateDto);
 
-        resp.sendRedirect("/candidateList");
+        resp.sendRedirect("candidates");
     }
 }

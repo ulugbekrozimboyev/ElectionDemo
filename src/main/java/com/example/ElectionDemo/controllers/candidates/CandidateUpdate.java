@@ -34,6 +34,6 @@ public class CandidateUpdate extends HttpServlet {
         CandidateDto candidateDto = CandidateDaoHelper.getInstance().updateCandidateDto(params);
         CandidateDao.update(candidateDto);
 
-        resp.sendRedirect("/candidateList");
+        resp.sendRedirect("candidates");
     }
 }

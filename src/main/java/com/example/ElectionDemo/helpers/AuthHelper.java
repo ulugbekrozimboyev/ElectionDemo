@@ -6,6 +6,6 @@ package com.example.ElectionDemo.helpers;
  */
 public class AuthHelper {
     public static boolean isAllowed(String username, String password) {
-        return username.contentEquals("admin") && password.contentEquals("password");
+        return username.contentEquals("admin") && password.contentEquals("admin");
     }
 }

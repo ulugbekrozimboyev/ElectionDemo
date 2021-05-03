@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "candidateList", value = "/candidateList")
+@WebServlet(name = "candidates", value = "/candidates")
 public class Candidates extends HttpServlet {
     private List<CandidateDto> candidates;
 

@@ -24,7 +24,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="/"><%= "Election Demo" %>
+        <a class="navbar-brand" href="/ElectionDemo_war"><%= "Election Demo" %>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="questions">Questions</a></li>
-                <li class="nav-item"><a class="nav-link" href="candidateList">Candidates</a></li>
+                <li class="nav-item"><a class="nav-link" href="candidates">Candidates</a></li>
                 <c:if test="${empty username}">
                     <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
                 </c:if>
