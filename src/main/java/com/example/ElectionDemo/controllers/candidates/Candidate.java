@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.servlets.candidates;
+package com.example.ElectionDemo.controllers.candidates;
 
 import com.example.ElectionDemo.dao.CandidateDao;
 import com.example.ElectionDemo.dto.CandidateDto;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 @WebServlet(urlPatterns = "/candidate")
 public class Candidate extends HttpServlet {

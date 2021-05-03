@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.servlets.questions;
+package com.example.ElectionDemo.controllers.questions;
 
 import com.example.ElectionDemo.dao.QuestionDao;
 import com.example.ElectionDemo.dto.QuestionDto;
@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet(name = "QuestionUpdate", value = "/QuestionUpdate")
+@WebServlet(name = "QuestionUpdate", value = "/questionUpdate")
 public class QuestionUpdate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

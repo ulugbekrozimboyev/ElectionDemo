@@ -1,6 +1,6 @@
 package com.example.ElectionDemo.controllers.questions;
 
-import com.example.ElectionDemo.dao.QuestionsDao;
+import com.example.ElectionDemo.dao.QuestionDao;
 import com.example.ElectionDemo.dto.QuestionDto;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +17,7 @@ import java.util.List;
  * Date: 5/1/2021 3:41 PM
  */
 @WebServlet(name = "questions", value = "/questions")
-public class QuestionList extends HttpServlet {
+public class Questions extends HttpServlet {
 
     private String title;
     private List<QuestionDto> questions;

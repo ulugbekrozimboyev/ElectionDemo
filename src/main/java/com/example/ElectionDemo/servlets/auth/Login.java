@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "Login", value = "/login")
 public class Login extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("auth/login.jsp");
@@ -18,26 +19,26 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String uname = request.getParameter("username");
-        String pword = request.getParameter("password");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+//        PrintWriter out = response.getWriter();
 
-        if(AuthHelper.isAllowed(uname, pword)) {
-
+        if(AuthHelper.isAllowed(username, password)) {
             HttpSession session = request.getSession();
-            session.setAttribute("username", uname);
+            session.setAttribute("username", username);
 
-            request.setAttribute("username", uname);
+            request.setAttribute("username", username);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
-        } else {
 
-            request.setAttribute("message", "Login or password is not correct !");
-
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("auth/login.jsp");
-            requestDispatcher.forward(request, response);
+            return;
         }
+
+        request.setAttribute("message", "Login or password is not correct !");
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("auth/login.jsp");
+        requestDispatcher.forward(request, response);
     }
 }

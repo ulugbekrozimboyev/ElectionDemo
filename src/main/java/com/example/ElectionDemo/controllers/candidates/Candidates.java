@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "candidateList", value = "/candidateList")
-public class CandidateList extends HttpServlet {
+public class Candidates extends HttpServlet {
     private List<CandidateDto> candidates;
 
     @Override

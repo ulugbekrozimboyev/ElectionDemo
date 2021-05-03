@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.servlets.questions;
+package com.example.ElectionDemo.controllers.questions;
 
 import com.example.ElectionDemo.dao.QuestionDao;
 import com.example.ElectionDemo.dto.QuestionDto;
@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "QuestionAdd", value = "/QuestionAdd")
+@WebServlet(name = "questionAdd", value = "/questionAdd")
 public class QuestionAdd extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

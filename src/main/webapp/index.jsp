@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="questions">Questions</a></li>
-                <li class="nav-item"><a class="nav-link" href="CandidateList">Candidates</a></li>
+                <li class="nav-item"><a class="nav-link" href="candidateList">Candidates</a></li>
                 <c:if test="${empty username}">
                     <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
                 </c:if>

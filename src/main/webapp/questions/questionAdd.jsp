@@ -20,7 +20,7 @@
             <h1> Add a question</h1>
         </div>
         <div class="col-md-12">
-            <form method="post" action="QuestionAdd">
+            <form method="post" action="questionAdd">
                 <div class="input-group">
                     <input type="text" class="form-control" name="title">
                 </div>

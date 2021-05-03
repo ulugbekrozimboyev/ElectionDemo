@@ -31,7 +31,7 @@
             <div class="col-md-12">
                 <h1>Questions</h1>
             </div>
-            <div class="col-12"><a href="QuestionAdd" class="btn btn-info">Add Question</a></div>
+            <div class="col-12"><a href="questionAdd" class="btn btn-info">Add Question</a></div>
             <div class="col-md-12" style="margin-top: 20px;">
                 <ul class="list-group">
                     <c:forEach var="question" items="${questionList}">
