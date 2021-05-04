@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.servlets.questions;
+package com.example.ElectionDemo.controllers.questions;
 
 import com.example.ElectionDemo.dao.QuestionDao;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "QuestionDelete", value = "/questionDelete")
+@WebServlet(name = "questionDelete", value = "/questionDelete")
 public class QuestionDelete extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

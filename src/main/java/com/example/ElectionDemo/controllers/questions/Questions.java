@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.servlets.questions;
+package com.example.ElectionDemo.controllers.questions;
 
 import com.example.ElectionDemo.dao.QuestionDao;
 import com.example.ElectionDemo.dto.QuestionDto;
@@ -16,21 +16,21 @@ import java.util.List;
  * Author: Ulug'bek Ro'zimboyev  <ulugbekrozimboyev@gmail.com>
  * Date: 5/1/2021 3:41 PM
  */
-@WebServlet(name = "QuestionsList", value = "/questions")
-public class QuestionList extends HttpServlet {
+@WebServlet(name = "questions", value = "/questions")
+public class Questions extends HttpServlet {
 
     private String title;
-    private List<QuestionDto> questionList;
+    private List<QuestionDto> questions;
 
     public void init() {
         title = "Get all questions";
-        questionList = QuestionDao.findAll();
+        questions = QuestionDao.findAll();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         request.setAttribute("message", title);
-        request.setAttribute("questionList", questionList);
+        request.setAttribute("questionList", questions);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("questions/questions.jsp");
         requestDispatcher.forward(request, response);

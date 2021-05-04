@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.servlets.candidates;
+package com.example.ElectionDemo.controllers.candidates;
 
 import com.example.ElectionDemo.dao.CandidateDao;
 import com.example.ElectionDemo.dto.CandidateDto;
@@ -9,8 +9,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CandidateList", value = "/CandidateList")
-public class CandidateList extends HttpServlet {
+@WebServlet(name = "candidates", value = "/candidates")
+public class Candidates extends HttpServlet {
     private List<CandidateDto> candidates;
 
     @Override

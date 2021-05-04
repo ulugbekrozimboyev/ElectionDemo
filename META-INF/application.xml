@@ -10,16 +10,4 @@
             <context-root>ElectionDemoWeb</context-root>
         </web>
     </module>
-    <module id="ElectionDemo-Web">
-        <web>
-            <web-uri>ElectionDemo-1.0-SNAPSHOT.war</web-uri>
-            <context-root>ElectionDemoWeb</context-root>
-        </web>
-    </module>
-    <module id="ElectionDemo-Web">
-        <web>
-            <web-uri>ElectionDemo-1.0-SNAPSHOT.war</web-uri>
-            <context-root>ElectionDemoWeb</context-root>
-        </web>
-    </module>
 </application>

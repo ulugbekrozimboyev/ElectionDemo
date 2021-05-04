@@ -19,7 +19,7 @@ public class CandidateDao {
 
     public static Optional<CandidateDto> findById(Long id) {
         for (CandidateDto candidateDto : candidateDtos) {
-            if(candidateDto.getId().equals(id)) {
+            if(Objects.equals(candidateDto.getId(), id)) {
                 return Optional.of(candidateDto);
             }
         }
@@ -32,7 +32,7 @@ public class CandidateDao {
 
     public static void update(CandidateDto candidateDto) {
         for (int i = 0; i < candidateDtos.size(); i++) {
-            if(candidateDto.getId().equals(candidateDtos.get(i).getId())) {
+            if(Objects.equals(candidateDto.getId(), candidateDtos.get(i).getId())) {
                 candidateDtos.set(i, candidateDto);
                 return;
             }

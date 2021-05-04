@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.servlets.candidates;
+package com.example.ElectionDemo.controllers.candidates;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
