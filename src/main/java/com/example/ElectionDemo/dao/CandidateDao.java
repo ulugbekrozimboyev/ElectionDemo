@@ -25,9 +25,21 @@ public class CandidateDao {
         }
         return Optional.empty();
     }
+    public static Optional<CandidateDto> findByFullName(String username) {
+        for (CandidateDto candidateDto : candidateDtos) {
+            if(Objects.equals(candidateDto.getFullName(), username)) {
+                return Optional.of(candidateDto);
+            }
+        }
+        return Optional.empty();
+    }
 
     public static List<CandidateDto> findAll() {
         return candidateDtos;
+    }
+
+    public static boolean existCandidate(String username) {
+        return candidateDtos.stream().anyMatch(candidateDto -> candidateDto.getFullName().equals(username));
     }
 
     public static void update(CandidateDto candidateDto) {

@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/candidate")
+@WebServlet(name = "Candidate", value = "/candidate")
 public class Candidate extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.valueOf(request.getParameter("id"));
-        System.out.println(id);
         CandidateDao.delete(id);
     }
 

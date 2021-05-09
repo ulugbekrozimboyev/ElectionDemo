@@ -15,9 +15,7 @@
           href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
           integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+
 
 </head>
 <body>
@@ -33,7 +31,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="questions">Questions</a></li>
+                <c:if test="${not empty username and username!='admin'}">
+                    <li class="nav-item"><a class="nav-link" href="answer">Answer to Question</a></li>
+                </c:if>
                 <li class="nav-item"><a class="nav-link" href="candidates">Candidates</a></li>
+
+                <c:if test="${not empty username and username=='admin'}">
+                    <li class="nav-item"><a class="nav-link" href="statistics">Statistics</a></li>
+                </c:if>
                 <c:if test="${empty username}">
                     <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
                 </c:if>
@@ -44,6 +49,11 @@
         </div>
     </div>
 </nav>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

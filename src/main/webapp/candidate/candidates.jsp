@@ -12,7 +12,9 @@
 <div class="container mt">
   <div class="row mt-3">
     <div class="col-12"><h1 class="title">Candidates</h1></div>
-    <div class="col-12"><a href="/candidateAdd" class="btn btn-info">Add Candidate</a></div>
+    <c:if test="${not empty username and username =='admin'}">
+      <div class="col-12"><a href="/candidateAdd" class="btn btn-info">Add Candidate</a></div>
+    </c:if>
     <div class="col-12">
       <c:forEach var="candidate" items="${candidates}">
         <div class="card mt-3">
@@ -27,9 +29,10 @@
             </c:forEach>
           </ul>
           <div class="card-body">
-            <a href="updateCandidate?id=${candidate.getId()}" class="btn btn-info">Update</a>
-            <button onClick="deleteCandidate(${candidate.getId()})" class="btn btn-danger">Delete</button>
-
+            <c:if test="${not empty username and username =='admin'}">
+              <a href="updateCandidate?id=${candidate.getId()}" class="btn btn-info">Update</a>
+              <button onClick="deleteCandidate(${candidate.getId()})" class="btn btn-danger">Delete</button>
+            </c:if>
           </div>
         </div>
       </c:forEach>

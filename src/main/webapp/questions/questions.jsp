@@ -31,14 +31,19 @@
             <div class="col-md-12">
                 <h1>Questions</h1>
             </div>
-            <div class="col-12"><a href="questionAdd" class="btn btn-info">Add Question</a></div>
+<c:if test="${not empty username and username eq 'admin'}">
+    <div class="col-12"><a href="questionAdd" class="btn btn-info">Add Question</a></div>
+</c:if>
             <div class="col-md-12" style="margin-top: 20px;">
                 <ul class="list-group">
                     <c:forEach var="question" items="${questionList}">
                         <li class="list-group-item">
                                 ${question.id}. ${question.title}
-                            <a href="questionDelete?id=${question.id}" class="btn btn-danger edit-btn">Delete</a>
-                            <a href="questionUpdate?id=${question.id}" class="btn btn-info edit-btn">Edit</a>
+                            <c:if test="${not empty username and username eq 'admin'}">
+                                <a href="questionDelete?id=${question.id}" class="btn btn-danger edit-btn">Delete</a>
+                                <a href="questionUpdate?id=${question.id}"
+                                   class="btn btn-info edit-btn">Edit</a>
+                            </c:if>
                         </li>
                     </c:forEach>
                 </ul>
