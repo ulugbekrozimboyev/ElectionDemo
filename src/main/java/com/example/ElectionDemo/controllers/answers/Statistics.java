@@ -18,8 +18,8 @@ import java.io.IOException;
 public class Statistics extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("statistics", AnswerDao.getAnswerStatistics(CandidateDao.findAll(), QuestionDao.findAll()));
-        System.out.println(AnswerDao.getAnswerStatistics(CandidateDao.findAll(), QuestionDao.findAll()));
+        req.setAttribute("statistics", AnswerDao.getAnswerStatistics(CandidateDao.findAll(), QuestionDao.findAll(getServletContext())));
+        System.out.println(AnswerDao.getAnswerStatistics(CandidateDao.findAll(), QuestionDao.findAll(getServletContext())));
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("answers/statistics.jsp");
         requestDispatcher.forward(req, resp);
     }

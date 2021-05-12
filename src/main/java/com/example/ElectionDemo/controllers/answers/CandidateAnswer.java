@@ -24,7 +24,7 @@ public class CandidateAnswer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("answerOptions", Answer.values());
-        req.setAttribute("questions", QuestionDao.findAll());
+        req.setAttribute("questions", QuestionDao.findAll(getServletContext()));
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("answers/answer.jsp");
         requestDispatcher.forward(req, resp);
     }
