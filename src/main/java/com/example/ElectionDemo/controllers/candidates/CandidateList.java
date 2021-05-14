@@ -10,24 +10,11 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "Candidates", value = "/candidates")
-public class Candidates extends HttpServlet {
-    private List<CandidateDto> candidates;
-
-    @Override
-    public void init() throws ServletException {
-        candidates = CandidateDao.findAll();
-    }
-
+public class CandidateList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("candidates", candidates);
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("candidate/candidates.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("candidate/candidateList.jsp");
         requestDispatcher.forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

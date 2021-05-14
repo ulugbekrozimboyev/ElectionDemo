@@ -12,7 +12,6 @@ import java.io.IOException;
 public class CandidateAdd extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("title", "Add Candidate");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("candidate/addCandidate.jsp");
         requestDispatcher.forward(request, response);
     }

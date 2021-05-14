@@ -8,14 +8,15 @@
 <%@ include file="../index.jsp" %>
 <html>
 <head>
-  <title>${title}</title>
+  <title>Add Candidate</title>
 </head>
 <body>
 <div class="container">
   <div class="row mt-4">
-    <div class="col-12"><h1>${title}</h1></div>
+    <div id="error"></div>
+    <div class="col-12"><h1>Add Candidate</h1></div>
     <div class="col-12">
-      <form action="/candidate" method="post">
+      <form method="post" onsubmit="onSubmit(event)">
         <div class="form-group">
           <label for="fullName">Fullname</label>
           <input type="text" class="form-control" name="fullName" id="fullName"
@@ -34,7 +35,7 @@
         <div id="inputs">
         </div>
         <button type="button" class="btn btn-success btn-block my-2" onclick="addInput()">Add</button>
-        <button class="btn btn-primary btn-block">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
       </form>
     </div>
   </div>
@@ -53,5 +54,28 @@
     </div>`.replace("#Id", index).replace("#Id", index++)
             , "text/html").body);
   }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    let body = {}
+    const data = new FormData(e.target);
+    body["currentJob"] = data.get("currentJob");
+    body["fullName"] = data.get("fullName");
+    body["about"] = data.get("about");
+    body["currentJob"] = data.get("currentJob");
+    body["currentJob"] = data.get("currentJob");
+    let moreInfo = {}
+    for (let i = 0; i < index; i++) {
+      moreInfo[data.get("key-" + i)] = data.get("value-" + i)
+    }
+    body["moreInformation"] = moreInfo;
+    console.log(body)
+    fetch("/candidate", {method: "POST", body: JSON.stringify(body)})
+            .then(res => window.location.href = "/candidates")
+            .catch(() => document.getElementById("error").innerText = `<div class="bg-danger"> <p>Something is wrong</p><div/>  `)
+
+  }
+
+
 </script>
 </html>

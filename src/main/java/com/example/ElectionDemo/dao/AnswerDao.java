@@ -24,7 +24,7 @@ public class AnswerDao {
             answerDto.forEach(answer -> answer.setId(i.getAndIncrement()));
         } else {
             AtomicReference<Long> id = new AtomicReference<>(answerDtos.get(answerDtos.size() - 1).getId());
-            answerDto.forEach(answer -> answer.setId(id.get() + 1));
+            answerDto.forEach(answer -> answer.setId(id.getAndSet(id.get() + 1)));
         }
         answerDtos.addAll(answerDto);
         return answerDto;
