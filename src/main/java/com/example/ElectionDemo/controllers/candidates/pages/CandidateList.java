@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.controllers.candidates;
+package com.example.ElectionDemo.controllers.candidates.pages;
 
 import com.example.ElectionDemo.dao.CandidateDao;
 import com.example.ElectionDemo.dto.CandidateDto;

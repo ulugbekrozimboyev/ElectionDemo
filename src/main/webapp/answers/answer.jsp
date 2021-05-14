@@ -9,33 +9,22 @@
 <%@ include file="../index.jsp" %>
 <html>
 <head>
-    <title>Answer to Qestion</title>
+    <title>Answer to Question</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form action="/answer" method="post">
-                <c:forEach var="question" items="${questions}" varStatus="loop">
-                    <div style="margin-top: 30px">
-                        <h4><b>${loop.index + 1}. ${question.getTitle()}</b></h4>
-                        <c:forEach var="option" items="${answerOptions}">
-                            <div class="form-check" style="margin-left: 30px">
-
-                                <input class="form-check-input" type="radio" value="${option}" id="id-${loop.index + 1}-${option}"
-                                       name="${question.getId()}">
-                                <label class="form-check-label" for="id-${loop.index + 1}-${option}">
-                                        ${option}
-                                </label>
-
-                            </div>
-                        </c:forEach>
-                    </div>
-                </c:forEach>
+            <div id="error"></div>
+            <form method="post" id="form">
+                <div id="quizBody"></div>
                 <input type="submit" class="btn btn-info btn-block mt-5" value="Submit">
             </form>
         </div>
     </div>
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/js/answer.js">
+
+</script>
 </html>

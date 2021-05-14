@@ -5,7 +5,6 @@ import com.example.ElectionDemo.dto.AnswerDto;
 import com.example.ElectionDemo.dto.CandidateDto;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
