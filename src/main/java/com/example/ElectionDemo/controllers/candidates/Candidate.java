@@ -1,6 +1,7 @@
 package com.example.ElectionDemo.controllers.candidates;
 
 import com.example.ElectionDemo.dao.CandidateDao;
+import com.example.ElectionDemo.dao.DaoFactory;
 import com.example.ElectionDemo.dto.CandidateDto;
 import com.example.ElectionDemo.helpers.CandidateDaoHelper;
 
@@ -15,11 +16,17 @@ import java.util.Map;
 @WebServlet(urlPatterns = "/candidate")
 public class Candidate extends HttpServlet {
 
+    private final CandidateDao dao;
+
+    public Candidate() {
+        this.dao = DaoFactory.getInstance().getCandidateDao();
+    }
+
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.valueOf(request.getParameter("id"));
         System.out.println(id);
-        CandidateDao.delete(id);
+        dao.delete(id);
     }
 
     @Override
@@ -27,8 +34,7 @@ public class Candidate extends HttpServlet {
         Map<String, String[]> params = req.getParameterMap();
 
         CandidateDto candidateDto = CandidateDaoHelper.getInstance().updateCandidateDto(params);
-        CandidateDao.update(candidateDto);
-        CandidateDao.save(candidateDto);
+        dao.save(candidateDto);
 
         resp.sendRedirect("candidates");
     }

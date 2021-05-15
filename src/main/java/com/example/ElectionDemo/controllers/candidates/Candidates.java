@@ -1,6 +1,7 @@
 package com.example.ElectionDemo.controllers.candidates;
 
 import com.example.ElectionDemo.dao.CandidateDao;
+import com.example.ElectionDemo.dao.DaoFactory;
 import com.example.ElectionDemo.dto.CandidateDto;
 
 import javax.servlet.*;
@@ -11,11 +12,16 @@ import java.util.List;
 
 @WebServlet(name = "candidates", value = "/candidates")
 public class Candidates extends HttpServlet {
+    private final CandidateDao dao;
     private List<CandidateDto> candidates;
+
+    public Candidates() {
+        this.dao = DaoFactory.getInstance().getCandidateDao();
+    }
 
     @Override
     public void init() throws ServletException {
-        candidates = CandidateDao.findAll();
+        candidates = dao.findAll();
     }
 
     @Override
