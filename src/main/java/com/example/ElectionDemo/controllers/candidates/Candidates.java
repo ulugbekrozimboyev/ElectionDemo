@@ -13,7 +13,6 @@ import java.util.List;
 @WebServlet(name = "candidates", value = "/candidates")
 public class Candidates extends HttpServlet {
     private final CandidateDao dao;
-    private List<CandidateDto> candidates;
 
     public Candidates() {
         this.dao = DaoFactory.getInstance().getCandidateDao();
@@ -21,11 +20,11 @@ public class Candidates extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        candidates = dao.findAll();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<CandidateDto> candidates = dao.findAll();
         request.setAttribute("candidates", candidates);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("candidate/candidates.jsp");

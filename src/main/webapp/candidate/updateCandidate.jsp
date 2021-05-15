@@ -34,10 +34,10 @@
         </div>
         <h6>More details</h6>
         <div id="inputs">
-          <c:forEach items="${candidate.getMoreInformation()}" var="entry" varStatus="loop">
+          <c:forEach items="${candidate.getParams()}" var="entry" varStatus="loop">
             <div class="input-group-prepend my-2">
-              <input type="text" required name="key-${loop.index}" value="${entry.key}" class="form-control ">
-              <input type="text" required name="value-${loop.index  }" value="${entry.value}" class="form-control">
+              <input type="text" required name="key-${loop.index}" value="${entry.getKey()}" class="form-control ">
+              <input type="text" required name="value-${loop.index  }" value="${entry.getValue()}" class="form-control">
             </div>
           </c:forEach>
         </div>

@@ -19,6 +19,16 @@ public class ItemParam {
     private Long id;
     private String key;
     private String value;
-    @Column(name = "candidate_id", table = "candidates")
-    private Long candidateId;
+//    @Column(name = "candidate_id", table = "candidates")
+//    private Long candidateId;
+
+
+    @Override
+    public String toString() {
+        return "ItemParam{" +
+                "id=" + id +
+                ", key='" + key + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }

@@ -12,7 +12,7 @@
 <div class="container mt">
   <div class="row mt-3">
     <div class="col-12"><h1 class="title">Candidates</h1></div>
-    <div class="col-12"><a href="/candidateAdd" class="btn btn-info">Add Candidate</a></div>
+    <div class="col-12"><a href="candidateAdd" class="btn btn-info">Add Candidate</a></div>
     <div class="col-12">
       <c:forEach var="candidate" items="${candidates}">
         <div class="card mt-3">
@@ -22,8 +22,8 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><b>Job:</b> ${candidate.getCurrentJob()}</li>
-            <c:forEach items="${candidate.getMoreInformation()}" var="entry">
-              <li class="list-group-item"><b style="text-transform: capitalize">${entry.key}:</b> ${entry.value}</li>
+            <c:forEach items="${candidate.getParams()}" var="entry">
+              <li class="list-group-item"><b style="text-transform: capitalize">${entry.getKey()}:</b> ${entry.getValue()}</li>
             </c:forEach>
           </ul>
           <div class="card-body">
@@ -40,9 +40,10 @@
 </body>
 <script>
   function deleteCandidate(idCandidate) {
-    fetch("/candidate?id=" + idCandidate, {method: "DELETE"})
+    fetch("/candidateDelete?id=" + idCandidate, {method: "DELETE"})
             .then(res => {
-              window.location.href="/candidates"
+              //this is not necessary, we will redirect it from servlet
+              // window.location.href="/candidates"
               console.log(res)
             })
             .catch(err => console.log(err))

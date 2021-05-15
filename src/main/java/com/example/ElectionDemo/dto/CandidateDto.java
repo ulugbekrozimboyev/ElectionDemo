@@ -19,12 +19,6 @@ import java.util.Map;
 @Builder
 @Entity
 @Table(name = "candidates")
-@NamedQueries(
-        @NamedQuery(
-                name = "getAllCandidates",
-                query = "select * from candidates as c left join candidate_params as cp on cp.candidate_id=c.id offset=:offset limit=:limit"
-        )
-)
 public class CandidateDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,9 +29,17 @@ public class CandidateDto {
     private String currentJob;
     private String about;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
     private List<ItemParam> params;
 
-    @Transient
-    private Map<String, String> moreInformation;
+    @Override
+    public String toString() {
+        return "CandidateDto{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", currentJob='" + currentJob + '\'' +
+                ", about='" + about + '\'' +
+                ", params=" + params +
+                '}';
+    }
 }

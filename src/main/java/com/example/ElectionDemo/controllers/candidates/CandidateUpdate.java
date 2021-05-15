@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 @WebServlet(name = "candidateUpdate", urlPatterns = "/updateCandidate")
 public class CandidateUpdate extends HttpServlet {
@@ -38,7 +39,8 @@ public class CandidateUpdate extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, String[]> params = req.getParameterMap();
 
-        CandidateDto candidateDto = CandidateDaoHelper.getInstance().updateCandidateDto(params);
+        Optional<CandidateDto> currentCandidate = dao.findById(Long.valueOf(params.get("id")[0]));
+        CandidateDto candidateDto = CandidateDaoHelper.getInstance().updateCandidateDto(currentCandidate.get(), params);
         dao.save(candidateDto);
 
         resp.sendRedirect("candidates");

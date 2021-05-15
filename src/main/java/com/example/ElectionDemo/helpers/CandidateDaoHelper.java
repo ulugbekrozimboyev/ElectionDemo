@@ -1,8 +1,11 @@
 package com.example.ElectionDemo.helpers;
 
 import com.example.ElectionDemo.dto.CandidateDto;
+import com.example.ElectionDemo.dto.ItemParam;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,39 +38,34 @@ public class CandidateDaoHelper {
         return result;
     }
 
-    public CandidateDto updateCandidateDto(Map<String, String[]> params) {
-        HashMap<String, String> info = new HashMap<>();
-        CandidateDto candidateDto = new CandidateDto();
-
+    public CandidateDto updateCandidateDto(CandidateDto currentDto, Map<String, String[]> params) {
         for (String name : params.keySet()) {
-
             if(name == null) continue;
 
             String fixedName = name.toLowerCase();
             switch (fixedName) {
-                case "id":
-                    candidateDto.setId(Long.valueOf(params.get(name)[0]));
-                    break;
                 case "fullname":
-                    candidateDto.setFullName(params.get(name)[0]);
+                    currentDto.setFullName(params.get(name)[0]);
                     break;
                 case "currentjob":
-                    candidateDto.setCurrentJob(params.get(name)[0]);
+                    currentDto.setCurrentJob(params.get(name)[0]);
                     break;
                 case "about":
-                    candidateDto.setAbout(params.get(name)[0]);
+                    currentDto.setAbout(params.get(name)[0]);
                     break;
                 default:
                     if(fixedName.contains("key-")) {
-                        info.put(
-                            params.get(name)[0],
-                            params.get("value-" + name.substring(name.lastIndexOf("-") + 1))[0]
-                        );
+                        String key = params.get(name)[0];
+                        currentDto.getParams().forEach(itemParam -> {
+                            if (itemParam.getKey().equalsIgnoreCase(key)) {
+                                String val = params.get("value-" + name.substring(name.lastIndexOf("-") + 1))[0];
+                                itemParam.setValue(val);
+                            }
+                        });
                     }
             }
         }
 
-        candidateDto.setMoreInformation(info);
-        return candidateDto;
+        return currentDto;
     }
 }
