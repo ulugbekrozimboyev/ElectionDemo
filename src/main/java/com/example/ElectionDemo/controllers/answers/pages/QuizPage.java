@@ -24,16 +24,6 @@ public class QuizPage {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("answers/answer.jsp");
             requestDispatcher.forward(req, resp);
         }
-
-        @Override
-        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            Map<String, String[]> params = req.getParameterMap();
-            String username = String.valueOf(req.getSession().getAttribute("username"));
-            CandidateDto candidateDto = CandidateDao.findByFullName(username).get();
-            List<AnswerDto> answerDtos = AnswerDaoHelper.getInstance().getUserAnswerDtos(params, candidateDto.getId());
-            AnswerDao.save(answerDtos);
-            resp.sendRedirect("/");
-        }
     }
 
     @WebServlet(name = "statistics", value = "/statistics")
