@@ -17,16 +17,17 @@
 <div class="container mt">
     <div class="row mt-3">
         <div class="col-md-12">
-            <h1> Add a question</h1>
+            <h1>Update Question</h1>
+            <div id="error"></div>
         </div>
         <div class="col-md-12">
-            <form method="post" action="questionUpdate">
-                <div class="input-group">
-                    <input type="hidden" name="id" value="${question.id}">
-                    <input type="text" class="form-control" name="title" value="${question.title}">
+            <form onsubmit="onSubmit(event)">
+                <div class="input-group" id="questionInputs">
                 </div>
                 <button class="btn btn-info add-question" type="submit">Update</button>
             </form>
         </div>
     </div>
 </div>
+
+<script src="${pageContext.request.contextPath}/js/questionUpdate.js"></script>

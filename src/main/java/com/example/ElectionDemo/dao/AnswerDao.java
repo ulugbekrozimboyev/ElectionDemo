@@ -1,6 +1,9 @@
 package com.example.ElectionDemo.dao;
 
+import com.example.ElectionDemo.config.HibernateUtil;
 import com.example.ElectionDemo.dto.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,27 +14,28 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class AnswerDao {
-    private static List<AnswerDto> answerDtos = new ArrayList<>();
+public class AnswerDao extends HibernateUtil {
 
     public static List<AnswerDto> findAll() {
-        return answerDtos;
+        Session session = getSessionFactory().openSession();
+        Query<com.example.ElectionDemo.entities.Answer> query = session.createQuery("select a from Answer a order by a.id", com.example.ElectionDemo.entities.Answer.class);
+        return query.getResultList().stream().map(AnswerDao::convertToDto).collect(Collectors.toList());
     }
 
     public static List<AnswerDto> save(List<AnswerDto> answerDto) {
-        if(answerDtos.size() == 0) {
-            AtomicLong i = new AtomicLong();
-            answerDto.forEach(answer -> answer.setId(i.getAndIncrement()));
-        } else {
-            AtomicReference<Long> id = new AtomicReference<>(answerDtos.get(answerDtos.size() - 1).getId());
-            answerDto.forEach(answer -> answer.setId(id.getAndSet(id.get() + 1)));
+        Session session = getSessionFactory().openSession();
+
+        for (AnswerDto dto : answerDto) {
+            session.getTransaction().begin();
+            session.saveOrUpdate(convertToEntity(dto));
+            session.getTransaction().commit();
         }
-        answerDtos.addAll(answerDto);
         return answerDto;
     }
 
     public static List<StatisticsDto> getAnswerStatistics(List<CandidateDto> candidates, List<QuestionDto> questions) {
         List<StatisticsDto> statisticsDtos = new ArrayList<>();
+        List<AnswerDto> answerDtos = findAll();
         for (CandidateDto candidate : candidates) {
 
             Map<Answer, AnswerCountDto> statistics = new HashMap<>();
@@ -50,5 +54,13 @@ public class AnswerDao {
             statisticsDtos.add(new StatisticsDto(candidate, statistics));
         }
         return statisticsDtos;
+    }
+
+    private static AnswerDto convertToDto(com.example.ElectionDemo.entities.Answer answer) {
+        return new AnswerDto(answer.getId(), answer.getQuestionId(), answer.getUserId(), answer.getAnswer());
+    }
+
+    private static com.example.ElectionDemo.entities.Answer convertToEntity(AnswerDto answer) {
+        return new com.example.ElectionDemo.entities.Answer(answer.getId(), answer.getQuestionId(), answer.getUserId(), answer.getAnswer());
     }
 }

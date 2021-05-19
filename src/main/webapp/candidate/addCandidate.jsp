@@ -71,10 +71,9 @@
     console.log(body)
     fetch("/candidate", {method: "POST", body: JSON.stringify(body)})
             .then(res => window.location.href = "/candidates")
-            .catch(() => document.getElementById("error").innerText = `<div class="bg-danger"> <p>Something is wrong</p><div/>  `)
+            .catch(() => document.getElementById("error").innerHTML = `<div class="bg-danger"> <p>Something is wrong</p><div/>  `)
 
   }
-
 
 </script>
 </html>

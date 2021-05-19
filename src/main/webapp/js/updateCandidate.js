@@ -60,7 +60,7 @@ function onSubmit(e) {
     console.log(body)
     fetch("/candidate?id=" + body.id, {method: "PUT", body: JSON.stringify(body)})
         .then(res => window.location.href = "/candidates")
-        .catch(() => document.getElementById("error").innerText = `<div class="bg-danger"> <p>Something is wrong</p><div/>  `)
+        .catch(() => document.getElementById("error").innerHTML = `<div class="bg-danger"> <p>Something is wrong</p><div/>  `)
 
 }
 

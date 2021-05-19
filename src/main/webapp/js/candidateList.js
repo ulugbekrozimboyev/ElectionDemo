@@ -3,7 +3,6 @@ function setMoreInfoToCard(moreInformation, html) {
     for (let i in moreInformation) {
         list.push(`<li class="list-group-item"><b style="text-transform: capitalize">key:</b> value</li>`.replace("key", i).replace("value", moreInformation[i]));
     }
-    console.log("hey")
     return html.replace("##map", list.join(""))
 
 }

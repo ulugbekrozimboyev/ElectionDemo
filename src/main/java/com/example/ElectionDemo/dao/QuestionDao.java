@@ -32,8 +32,7 @@ public class QuestionDao extends HibernateUtil {
     public static List<QuestionDto> findAll() {
         Session session = getSessionFactory().openSession();
         session.getTransaction().begin();
-        org.hibernate.query.Query<Question> query = session.createQuery("select  q from Question q", Question.class);
-        System.out.println(query.getResultList());
+        org.hibernate.query.Query<Question> query = session.createQuery("select  q from Question q order by q.id", Question.class);
         session.getTransaction().commit();
 //        EntityManagerFactory emf = (EntityManagerFactory) context.getAttribute("emf");
 //        EntityManager em = emf.createEntityManager();
@@ -118,8 +117,9 @@ public class QuestionDao extends HibernateUtil {
     public static void delete(Long id) {
         Session session = getSessionFactory().openSession();
         session.getTransaction().begin();
-        Query nativeQuery = session.createNativeQuery("delete  from  questions where id = :id");
-        nativeQuery.setParameter("id", id);
+        Question load = session.load(Question.class, id);
+        System.out.println(load);
+        session.delete(load);
         session.getTransaction().commit();
     }
 
