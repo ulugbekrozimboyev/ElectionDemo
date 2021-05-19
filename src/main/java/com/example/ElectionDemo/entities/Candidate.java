@@ -1,4 +1,4 @@
-package com.example.ElectionDemo.entity;
+package com.example.ElectionDemo.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,11 +13,11 @@ import java.util.Map;
 @NoArgsConstructor
 public class Candidate {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
     private String currentJob;
     private String about;
     @ElementCollection
-    private Map<String, String> information;
+    private Map<String, String> moreInformation;
 }

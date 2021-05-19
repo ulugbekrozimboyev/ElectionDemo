@@ -1,5 +1,7 @@
 package com.example.ElectionDemo.config;
 
+import com.example.ElectionDemo.entities.Answer;
+import com.example.ElectionDemo.entities.Candidate;
 import com.example.ElectionDemo.entities.Question;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -26,18 +28,20 @@ public class HibernateUtil {
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "org.postgresql.Driver");
                 settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/postgres");
-                settings.put(Environment.USER, "postgres");
-                settings.put(Environment.PASS, "mysecretpassword");
+                settings.put(Environment.USER, "superman");
+                settings.put(Environment.PASS, "root123");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
 
                 settings.put(Environment.SHOW_SQL, "true");
 
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-                settings.put(Environment.HBM2DDL_AUTO, "false");
+                settings.put(Environment.HBM2DDL_AUTO, "none");
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(Question.class);
+                configuration.addAnnotatedClass(Answer.class);
+                configuration.addAnnotatedClass(Candidate.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

@@ -24,13 +24,13 @@ public class Questions extends HttpServlet {
 
     public void init() {
         title = "Get all questions";
-        questions = QuestionDao.findAll(getServletContext());
+        questions = QuestionDao.findAll();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         request.setAttribute("message", title);
-        request.setAttribute("questionList", questions);
+        request.setAttribute("questionList", QuestionDao.findAll());
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("questions/questions.jsp");
         requestDispatcher.forward(request, response);

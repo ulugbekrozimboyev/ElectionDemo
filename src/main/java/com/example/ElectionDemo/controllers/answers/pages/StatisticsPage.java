@@ -6,8 +6,6 @@ import com.example.ElectionDemo.dao.QuestionDao;
 import com.example.ElectionDemo.dto.Answer;
 import com.example.ElectionDemo.dto.QuestionAnswerDto;
 import com.example.ElectionDemo.dto.StatisticsDto;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

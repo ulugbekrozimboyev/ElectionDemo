@@ -40,7 +40,7 @@
                         <li class="list-group-item">
                                 ${question.id}. ${question.title}
                             <c:if test="${not empty username and username eq 'admin'}">
-                                <a href="questionDelete?id=${question.id}" class="btn btn-danger edit-btn">Delete</a>
+                                <a onclick="deleteQuestion(${question.id})" class="btn btn-danger edit-btn">Delete</a>
                                 <a href="questionUpdate?id=${question.id}"
                                    class="btn btn-info edit-btn">Edit</a>
                             </c:if>
@@ -51,4 +51,17 @@
         </div>
     </div>
 </body>
+<script>
+    function deleteQuestion(id) {
+        fetch("/question?id=" + id, {method: "DELETE"})
+            .then(res => {
+                window.location.href = "/questions"
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+
+    }
+
+</script>
 </html>
+

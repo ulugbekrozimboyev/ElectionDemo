@@ -1,64 +1,70 @@
 package com.example.ElectionDemo.dao;
 
+import com.example.ElectionDemo.config.HibernateUtil;
 import com.example.ElectionDemo.dto.CandidateDto;
+import com.example.ElectionDemo.entities.Candidate;
+import org.hibernate.Session;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class CandidateDao {
-
-    private static ArrayList<CandidateDto> candidateDtos = new ArrayList<>(Arrays.asList(
-            new CandidateDto(1L, "Candidate 1", "chairman at OFB", "about candidate 1", getMap()),
-            new CandidateDto(2L, "Candidate 2", "director at 42 school", "about candidate 2", getMap()),
-            new CandidateDto(3L, "Candidate 3", "driver at Bank", "about candidate 3", getMap())
-    ));
+public class CandidateDao extends HibernateUtil {
 
     public static void save(CandidateDto candidateDto) {
-        candidateDto.setId((candidateDtos.get(candidateDtos.size() - 1).getId() + 1));
-        candidateDtos.add(candidateDto);
+        Session session = getSessionFactory().openSession();
+        session.getTransaction().begin();
+        session.saveOrUpdate(convertToEntity(candidateDto));
+        session.getTransaction().commit();
     }
 
     public static Optional<CandidateDto> findById(Long id) {
-        for (CandidateDto candidateDto : candidateDtos) {
-            if(Objects.equals(candidateDto.getId(), id)) {
-                return Optional.of(candidateDto);
-            }
-        }
-        return Optional.empty();
+        Session session = getSessionFactory().openSession();
+        NativeQuery<Candidate> candidate = session.createNativeQuery("select c from candidate c where id = :id", Candidate.class);
+        candidate.setParameter("id", id);
+        Optional<Candidate> optionalCandidate = candidate.stream().findFirst();
+        return optionalCandidate.map(CandidateDao::convertToDto);
     }
     public static Optional<CandidateDto> findByFullName(String username) {
-        for (CandidateDto candidateDto : candidateDtos) {
-            if(Objects.equals(candidateDto.getFullName(), username)) {
-                return Optional.of(candidateDto);
-            }
-        }
-        return Optional.empty();
+        Session session = getSessionFactory().openSession();
+        NativeQuery<Candidate> nativeQuery = session.createNativeQuery("select c from candidate c where c.fullname =:fullName", Candidate.class);
+        nativeQuery.setParameter("fullName", username);
+        Optional<Candidate> result = nativeQuery.stream().findFirst();
+        return result.map(CandidateDao::convertToDto);
     }
 
     public static List<CandidateDto> findAll() {
-        return candidateDtos;
+        Session session = getSessionFactory().openSession();
+        Query<Candidate> query = session.createQuery("select c from Candidate c", Candidate.class);
+        return query.getResultList().stream().map(CandidateDao::convertToDto).collect(Collectors.toList());
     }
 
     public static boolean existCandidate(String username) {
-        return candidateDtos.stream().anyMatch(candidateDto -> candidateDto.getFullName().equals(username));
+        return findByFullName(username).isPresent();
     }
 
     public static void update(CandidateDto candidateDto) {
-        for (int i = 0; i < candidateDtos.size(); i++) {
-            if(Objects.equals(candidateDto.getId(), candidateDtos.get(i).getId())) {
-                candidateDtos.set(i, candidateDto);
-                return;
-            }
-        }
+        Session session = getSessionFactory().openSession();
+        session.getTransaction().begin();
+        session.saveOrUpdate(convertToEntity(candidateDto));
+        session.getTransaction().commit();
     }
 
     public static void delete(Long id) {
-        candidateDtos.removeIf(candidateDto -> candidateDto.getId().equals(id));
+        Session session = getSessionFactory().openSession();
+        NativeQuery nativeQuery = session.createNativeQuery("delete from candidate c where c.id = :id");
+        nativeQuery.setParameter("id", id);
+        nativeQuery.executeUpdate();
     }
 
-    private static HashMap<String, String> getMap() {
-        HashMap<String, String> info = new HashMap<>();
-        info.put("age", "21");
-        info.put("phone", "12345");
-        return info;
+
+    private static Candidate convertToEntity(CandidateDto candidateDto) {
+        return new Candidate(candidateDto.getId(), candidateDto.getFullName(), candidateDto.getCurrentJob(), candidateDto.getAbout(), candidateDto.getMoreInformation());
     }
+
+    private static CandidateDto convertToDto(Candidate candidateDto) {
+        return new CandidateDto(candidateDto.getId(), candidateDto.getFullName(), candidateDto.getCurrentJob(), candidateDto.getAbout(), candidateDto.getMoreInformation());
+    }
+
 }

@@ -63,7 +63,6 @@
     body["fullName"] = data.get("fullName");
     body["about"] = data.get("about");
     body["currentJob"] = data.get("currentJob");
-    body["currentJob"] = data.get("currentJob");
     let moreInfo = {}
     for (let i = 0; i < index; i++) {
       moreInfo[data.get("key-" + i)] = data.get("value-" + i)

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.Map;
 
 /**
@@ -15,10 +16,13 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 public class CandidateDto {
+    @Id
     private Long id;
     private String fullName;
     private String currentJob;
     private String about;
+    @ElementCollection
     private Map<String, String> moreInformation;
 }
